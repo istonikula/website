@@ -1,25 +1,21 @@
-# Astrofy | Personal Portfolio Website Template
+# Isto Nikula | Full Stack Developer
 
-![Astrofy | Personal Porfolio Website Template](public/social_img.webp)
+<!-- ## Demo
 
-Astrofy is a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS. Create in minutes a website with a Blog, CV, Project Section, Store, and RSS Feed.
-
-## Demo
-
-View a live demo of [Astrofy](https://astrofy-template.netlify.app/)
+View a live demo of [Astrofy](https://astrofy-template.netlify.app/) -->
 
 ## Installation
 
 Run the following command in your terminal
 
 ```bash
-pnpm install
+npm install
 ```
 
 Once the packages are installed you are ready to run astro. Astro comes with a built-in development server that has everything you need for project development. The astro dev command will start the local development server so that you can see your new website in action for the very first time.
 
 ```bash
-pnpm run dev
+npm run dev
 ```
 
 ## Tech Stack
@@ -48,9 +44,6 @@ pnpm run dev
 │   │   │   ├── post1.md
 │   │   │   ├── post2.md
 │   │   │   └── post3.md
-│   │   ├── store/
-│   │   │   ├── item1.md
-│   │   │   ├── item2.md
 │   ├── layouts/
 │   │   └── BaseLayout.astro
 │   │   └── PostLayout.astro
@@ -68,7 +61,6 @@ pnpm run dev
 ├── public/
 │   ├── favicon.svg
 │   └── profile.webp
-│   └── social_img.webp
 ├── astro.config.mjs
 ├── tailwind.config.cjs
 ├── package.json
@@ -267,23 +259,3 @@ The configuration for the deployment varies depending on the platform where you 
 
 > **⚠️ CAUTION** </br>
 > The Blog pagination of this template is implemented using dynamic route parameters in its filename and for now this format is incompatible with SSR deploy configs, so please use the default static deploy options for your deployments.
-
-## Contributing
-
-Suggestions and pull requests are welcomed! Feel free to open a discussion or an issue for a new feature request or bug.
-
-One of the best ways to contribute is to grab a [bug report or feature suggestion](https://github.com/manuelernestog/astrofy/issues) that has been marked `accepted` and dig in.
-
-Please be wary of working on issues _not_ marked as `accepted`. Just because someone has created an issue doesn't mean we'll accept a pull request for it.
-
-## License
-
-Astrofy is licensed under the MIT license — see the [LICENSE](https://github.com/manuelernestog/astrofy/blob/main/LICENSE) file for details.
-
-## Contributors
-
-<a href="https://github.com/manuelernestog/astrofy/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=manuelernestog/astrofy" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
