@@ -5,7 +5,6 @@ customer: "KONE"
 role: "Full Stack Developer"
 from: "2/2017"
 to: "1/2018"
-badge: "WORK"
 tags:
   - React
   - TypeScript

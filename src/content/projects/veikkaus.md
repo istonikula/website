@@ -5,7 +5,6 @@ customer: "Veikkaus"
 role: "Full Stack Developer"
 from: "10/2020"
 to: "12/2023"
-badge: "WORK"
 tags:
   - Electron
   - React
