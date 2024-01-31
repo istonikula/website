@@ -1,4 +1,4 @@
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content'
 
 export async function allTags() {
   const projects = await getCollection('projects')

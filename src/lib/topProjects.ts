@@ -1,4 +1,4 @@
-import { getEntry } from "astro:content";
+import { getEntry } from 'astro:content'
 
 export async function topProjects() {
   return [

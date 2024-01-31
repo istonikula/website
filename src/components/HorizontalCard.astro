@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets'
 
 interface Props {
   title: string
@@ -12,8 +12,8 @@ interface Props {
   target?: string
 }
 
-const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
-const tag_url = Astro.props.tagUrl || '/tag';
+const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props
+const tag_url = Astro.props.tagUrl || '/tag'
 ---
 
 <div

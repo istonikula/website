@@ -1,12 +1,12 @@
 ---
-import { cx } from "class-variance-authority";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import TimeLine from "@components/cv/TimeLine.astro";
+import { cx } from 'class-variance-authority'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import TimeLine from '@components/cv/TimeLine.astro'
 import Project from '@components/cv/Project.astro'
 import { topProjects } from '@lib/topProjects'
 import { allTags } from '@lib/tags'
 
-const projects = await topProjects();
+const projects = await topProjects()
 const obsoleteTags = [
   'Azure',
   'folktale',
@@ -16,7 +16,7 @@ const obsoleteTags = [
 ]
 const skills = (await allTags())
   .filter(x => !obsoleteTags.includes(x))
-  .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+  .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">

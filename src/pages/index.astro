@@ -1,10 +1,10 @@
 ---
-import { cx } from "class-variance-authority";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { cx } from 'class-variance-authority'
+import BaseLayout from '@layouts/BaseLayout.astro'
 import { topProjects } from '@lib/topProjects'
 import ProjectCardWork from '@components/ProjectCardWork.astro'
 
-const projects = await topProjects();
+const projects = await topProjects()
 ---
 
 <BaseLayout sideBarActiveItemID="home">

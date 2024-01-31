@@ -1,13 +1,14 @@
 ---
-import { cx } from "class-variance-authority";
-import { getCollection } from "astro:content";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import { cx } from 'class-variance-authority'
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '@layouts/BaseLayout.astro'
 import { topProjects } from '@lib/topProjects'
 import ProjectCardFoss from '@components/ProjectCardFoss.astro'
 import ProjectCardWork from '@components/ProjectCardWork.astro'
 
-const projects = await topProjects();
-const foss = await getCollection("foss");
+const projects = await topProjects()
+const foss = await getCollection("foss")
 ---
 <BaseLayout title="Projects" sideBarActiveItemID="projects">
   {projects.map((p, idx) => (
