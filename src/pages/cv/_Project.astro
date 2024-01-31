@@ -1,7 +1,7 @@
 ---
 import { truncate } from 'lodash-es'
 import { getEntry } from 'astro:content'
-import TimeLineElement from './TimeLine.astro'
+import TimeLine from './_TimeLine.astro'
 
 interface Props {
   slug: string
@@ -12,7 +12,7 @@ const p = (await getEntry('projects', slug))!
 const { Content } = await p.render()
 const desc = truncate(p.body, { length: 160 })
 ---
-<TimeLineElement
+<TimeLine
   title={`${p.data.title}, ${p.data.customer}`}
   subtitle={`From ${p.data.from} to ${p.data.to}, ${p.data.role}`}
 >
@@ -23,4 +23,4 @@ const desc = truncate(p.body, { length: 160 })
     </div>
     <div class="hidden md:block"><Content /></div>
   </div>
-</TimeLineElement>
+</TimeLine>

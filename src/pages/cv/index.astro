@@ -1,10 +1,12 @@
 ---
 import { cx } from 'class-variance-authority'
-import BaseLayout from '@layouts/BaseLayout.astro'
-import TimeLine from '@components/cv/TimeLine.astro'
-import Project from '@components/cv/Project.astro'
-import { topProjects } from '@lib/topProjects'
-import { allTags } from '@lib/tags'
+
+import Layout from '@/components/Layout/Layout.astro'
+import { topProjects } from '@/lib/topProjects'
+import { allTags } from '@/lib/tags'
+
+import TimeLine from './_TimeLine.astro'
+import Project from './_Project.astro'
 
 const projects = await topProjects()
 const obsoleteTags = [
@@ -19,7 +21,7 @@ const skills = (await allTags())
   .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
+<Layout title="Resume" sideBarActiveItemID="cv">
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Project Experience</div>
   </div>

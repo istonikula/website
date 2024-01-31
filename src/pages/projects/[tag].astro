@@ -2,10 +2,10 @@
 import { cx } from 'class-variance-authority'
 import { getCollection } from 'astro:content'
 
-import BaseLayout from '@layouts/BaseLayout.astro'
-import { allTags } from '@lib/tags'
-import ProjectCardFoss from '@components/ProjectCardFoss.astro'
-import ProjectCardWork from '@components/ProjectCardWork.astro'
+import Layout from '@/components/Layout/Layout.astro'
+import { allTags } from '@/lib/tags'
+import ProjectCardFoss from '@/components/ProjectCardFoss.astro'
+import ProjectCardWork from '@/components/ProjectCardWork.astro'
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects')
@@ -25,7 +25,7 @@ const { tag } = Astro.params
 const { projects, foss } = Astro.props
 ---
 
-<BaseLayout title=`Projects with ${tag}` sideBarActiveItemID="projects">
+<Layout title=`Projects with ${tag}` sideBarActiveItemID="projects">
   {projects.map((p, idx) => (
     <>
       <div class={cx('divider my-0', { 'hidden': idx === 0})}></div>
@@ -40,4 +40,4 @@ const { projects, foss } = Astro.props
     </div>
   ))}
 
-</BaseLayout>
+</Layout>
