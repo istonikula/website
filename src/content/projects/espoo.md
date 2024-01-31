@@ -5,6 +5,7 @@ customer: "City of Espoo"
 role: "Full Stack Developer"
 from: "2/2018"
 to: "8/2020"
+badge: "WORK"
 tags:
   - React
   - Vue
