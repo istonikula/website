@@ -16,8 +16,11 @@ const desc = truncate(p.body, { length: 160 })
   title={`${p.data.title}, ${p.data.customer}`}
   subtitle={`From ${p.data.from} to ${p.data.to}, ${p.data.role}`}
 >
-  <div class="prose prose-sm xl:prose-base">
-    <div class="md:hidden">{desc}</div>
+  <div class="prose-sm">
+    <div class="md:hidden">
+      {desc}
+      <a class="underline" href={`/projects/${p.slug}`}>more</a>
+    </div>
     <div class="hidden md:block"><Content /></div>
   </div>
 </TimeLineElement>

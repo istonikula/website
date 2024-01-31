@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import HorizontalCard from './HorizontalCard.astro'
+
+interface Props {
+  slug: string
+  project: CollectionEntry<'projects'>['data']
+}
+
+const { slug, project } = Astro.props
+---
+<HorizontalCard
+  title={`${project.title}, ${project.customer}`}
+  img="/post_img.webp"
+  desc={`From ${project.from} to ${project.to}, ${project.role}`}
+  url={`/projects/${slug}`}
+  target="_self"
+/>

@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import HorizontalCard from './HorizontalCard.astro'
+
+interface Props {
+  project: CollectionEntry<'foss'>['data']
+}
+
+const { project } = Astro.props
+const badge = project.url.includes('github') ? 'GitHub' : ''
+---
+<HorizontalCard
+  title={project.title}
+  img="/post_img.webp"
+  desc={project.description}
+  url={project.url}
+  badge={badge}
+  tags={project.tags}
+  tagUrl="/projects"
+/>
