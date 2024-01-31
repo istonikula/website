@@ -16,21 +16,6 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </div>
 
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
-  </div>
-
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
-    <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
-  </div>
-
-  <div class="mb-5">
     <div class="text-3xl w-full font-bold">Experience</div>
   </div>
 
@@ -67,6 +52,27 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
       <a href="#" target="_blank"> Certification Name (with link)</a>
     </li>
   </ul>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Education</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Master of Science, Computer Science"
+      subtitle="1996 to 2001 at University of Helsinki"
+    >
+      <ul>
+        <li>Major: software engineering</li>
+        <li>1. minor: Mathematics</li>
+        <li>2. minor: work psychology and leadership</li>
+      </ul>
+    </TimeLineElement>
+    <TimeLineElement
+      title="Spanish Language and Culture"
+      subtitle="2003 to 2003 at Universidad de Zaragoza, Spain"
+    />
+  </div>
 
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Skills</div>
