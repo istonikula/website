@@ -11,11 +11,25 @@ const blogSchema = z.object({
     }).optional(),
 });
 
+const projectSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    customer: z.string(),
+    role: z.string(),
+    from: z.string(),
+    to: z.string(),
+    tags: z.array(z.string()).refine(items => new Set(items).size === items.length, {
+        message: 'tags must be unique',
+    }),
+})
+
 
 export type BlogSchema = z.infer<typeof blogSchema>;
 
-const blogCollection = defineCollection({ schema: blogSchema });
+const blogCollection = defineCollection({ type: 'content', schema: blogSchema });
+const projectCollection = defineCollection({ type: 'content', schema: projectSchema });
 
 export const collections = {
     'blog': blogCollection,
+    'projects': projectCollection
 }

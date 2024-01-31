@@ -1,0 +1,20 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import TimeLineElement from "./TimeLine.astro";
+
+interface Props {
+  slug: string
+}
+const { slug } = Astro.props
+
+const p = (await getEntry('projects', slug))!
+const { Content } = await p.render()
+---
+<TimeLineElement
+  title={`${p.data.title}, ${p.data.customer}`}
+  subtitle={`From ${p.data.from} to ${p.data.to}, ${p.data.role}`}
+>
+  <div class="prose prose-sm hidden lg:block xl:prose-base">
+    <Content />
+  </div>
+</TimeLineElement>
