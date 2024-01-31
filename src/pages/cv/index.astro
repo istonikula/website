@@ -5,8 +5,8 @@ import Layout from '@/components/Layout/Layout.astro'
 import { topProjects } from '@/lib/topProjects'
 import { allTags } from '@/lib/tags'
 
-import TimeLine from './_TimeLine.astro'
-import Project from './_Project.astro'
+import TimeLine from './_components/TimeLine.astro'
+import Project from './_components/Project.astro'
 
 const projects = await topProjects()
 const obsoleteTags = [
