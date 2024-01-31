@@ -117,23 +117,28 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <div class="text-3xl w-full font-bold">Certifications</div>
   </div>
 
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      AWS Certified Solutions Architect, Associate, 4/2015
-    </li>
-    <li>
-      Certified SAFe Practitioner, 10/2013
-    </li>
-    <li>
-      Certified SAFe Agilist, 5/2013
-    </li>
-    <li>
-      Spring Professional, 10/2012
-    </li>
-    <li>
-      Certified ScrumMaster, 5/2012
-    </li>
-  </ul>
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="AWS Certified Solutions Architect"
+      subtitle="4/2015, Amazon Web Services"
+    />
+    <TimeLineElement
+      title="Certified SAFe Practitioner"
+      subtitle="10/2013, Scaled Agile Academy"
+    />
+    <TimeLineElement
+      title="Certified SAFe Agilist"
+      subtitle="5/2013, Scaled Agile Academy"
+    />
+    <TimeLineElement
+      title="Spring Professional"
+      subtitle="10/2012, SpringSource"
+    />
+    <TimeLineElement
+      title="Certified ScrumMaster"
+      subtitle="5/2012, ScrumAlliance"
+    />
+  </div>
 
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Education</div>
