@@ -12,7 +12,7 @@ tags:
   - NodeJS
   - Express
   - Arrow
-  - Spring
+  - Spring Boot
   - Kotlin
   - microservices
   - api gateways

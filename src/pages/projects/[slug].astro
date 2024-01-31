@@ -15,5 +15,22 @@ const { Content } = await project.render()
 ---
 
 <BaseLayout title={project.data.title}>
-  <Content />
+  <main>
+    <article class="prose max-w-[750px] prose-img:mx-auto">
+      <h1 class="title my-2 text-4xl font-bold">{project.data.title}</h1>
+      <div>{project.data.customer}</div>
+      <div>
+        From {project.data.from} to {project.data.to}, {project.data.role}
+      </div>
+      {
+        project.data.tags?.map((tag) => (
+          <a href={`/projects/${tag}`} class="badge badge-outline ml-2 no-underline">
+            {tag}
+          </a>
+        ))
+      }
+      <div class="divider my-2"></div>
+      <Content />
+    </article>
+  </main>
 </BaseLayout>

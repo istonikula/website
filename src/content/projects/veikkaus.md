@@ -9,7 +9,7 @@ tags:
   - Electron
   - React
   - TypeScript
-  - Spring
+  - Spring Boot
   - Kotlin
   - OpenAPI
   - Swagger
