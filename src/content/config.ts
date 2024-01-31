@@ -1,15 +1,4 @@
 import { z, defineCollection } from "astro:content";
-const blogSchema = z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.string().optional(),
-    heroImage: z.string().optional(),
-    badge: z.string().optional(),
-    tags: z.array(z.string()).refine(items => new Set(items).size === items.length, {
-        message: 'tags must be unique',
-    }).optional(),
-});
 
 const projectSchema = z.object({
     title: z.string(),
@@ -32,14 +21,10 @@ const fossSchema = z.object({
     }),
 })
 
-export type BlogSchema = z.infer<typeof blogSchema>;
-
-const blogCollection = defineCollection({ type: 'content', schema: blogSchema });
 const projectCollection = defineCollection({ type: 'content', schema: projectSchema });
 const fossCollection = defineCollection({ type: 'data', schema: fossSchema });
 
 export const collections = {
-    'blog': blogCollection,
     'projects': projectCollection,
     'foss': fossCollection
 }
