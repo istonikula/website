@@ -2,142 +2,84 @@
 import { cx } from 'class-variance-authority'
 
 import Layout from '@/components/Layout/Layout.astro'
-import { topProjects } from '@/lib/topProjects'
 import { allTags } from '@/lib/tags'
+import { topProjects } from '@/lib/topProjects'
 
-import TimeLine from './_components/TimeLine.astro'
 import Project from './_components/Project.astro'
+import TimeLine from './_components/TimeLine.astro'
 
 const projects = await topProjects()
-const obsoleteTags = [
-  'Azure',
-  'folktale',
-  'ramda',
-  'monocle-ts',
-  'Vue',
-]
+const obsoleteTags = ['Azure', 'folktale', 'ramda', 'monocle-ts', 'Vue']
 const skills = (await allTags())
-  .filter(x => !obsoleteTags.includes(x))
+  .filter((x) => !obsoleteTags.includes(x))
   .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 ---
 
 <Layout title="Resume" sideBarActiveItemID="cv">
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Project Experience</div>
+    <div class="w-full text-3xl font-bold">Project Experience</div>
   </div>
 
   <div class="time-line-container mb-10">
-    {projects.map((p, idx) => (
-      <div class={cx({'mt-4': idx !== 0})}>
-        <Project slug={p.slug} />
-      </div>
-    ))}
+    {
+      projects.map((p, idx) => (
+        <div class={cx({ 'mt-4': idx !== 0 })}>
+          <Project slug={p.slug} />
+        </div>
+      ))
+    }
   </div>
 
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Employment</div>
+    <div class="w-full text-3xl font-bold">Employment</div>
   </div>
 
   <div class="time-line-container mb-10">
-    <TimeLine
-      title="Freelance Software Consultant"
-      subtitle="From 9/2019 at Isto Nikula Oy"
-    />
-    <TimeLine
-      title="Senior Software Architect"
-      subtitle="From 1/2017 to 9/2019 at Reaktor"
-    />
-    <TimeLine
-      title="Senior Software Architect"
-      subtitle="From 8/2015 to 12/2016 at Signom"
-    />
-    <TimeLine
-      title="Senior Software Architect"
-      subtitle="From 4/2011 to 7/2015 at Nitor"
-    />
-    <TimeLine
-      title="Senior Software Engineer"
-      subtitle="From 9/2008 to 4/2011 at Airwide Solutions, Finland"
-    />
-    <TimeLine
-      title="Delivery Architect"
-      subtitle="From 11/2007 to 8/2008 at Airwide Solutions, Spain"
-    />
-    <TimeLine
-      title="Solution Architect"
-      subtitle="From 9/2006 to 11/2007 at First Hop, Spain"
-    />
-    <TimeLine
-      title="Consultant"
-      subtitle="From 9/2005 to 9/2006 at Quality Objects, Spain"
-    />
-    <TimeLine
-      title="Consultant"
-      subtitle="From 3/2004 to 9/2005 at Accenture, Finland and Spain"
-    />
-    <TimeLine
-      title="Software Engineer"
-      subtitle="From 9/2003 to 3/2004 at Appelsiini"
-    />
-    <TimeLine
-      title="Software Engineer"
-      subtitle="From 8/2000 to 12/2002 at Nokia"
-    />
+    <TimeLine title="Freelance Software Consultant" subtitle="From 9/2019 at Isto Nikula Oy" />
+    <TimeLine title="Senior Software Architect" subtitle="From 1/2017 to 9/2019 at Reaktor" />
+    <TimeLine title="Senior Software Architect" subtitle="From 8/2015 to 12/2016 at Signom" />
+    <TimeLine title="Senior Software Architect" subtitle="From 4/2011 to 7/2015 at Nitor" />
+    <TimeLine title="Senior Software Engineer" subtitle="From 9/2008 to 4/2011 at Airwide Solutions, Finland" />
+    <TimeLine title="Delivery Architect" subtitle="From 11/2007 to 8/2008 at Airwide Solutions, Spain" />
+    <TimeLine title="Solution Architect" subtitle="From 9/2006 to 11/2007 at First Hop, Spain" />
+    <TimeLine title="Consultant" subtitle="From 9/2005 to 9/2006 at Quality Objects, Spain" />
+    <TimeLine title="Consultant" subtitle="From 3/2004 to 9/2005 at Accenture, Finland and Spain" />
+    <TimeLine title="Software Engineer" subtitle="From 9/2003 to 3/2004 at Appelsiini" />
+    <TimeLine title="Software Engineer" subtitle="From 8/2000 to 12/2002 at Nokia" />
   </div>
 
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Certifications</div>
+    <div class="w-full text-3xl font-bold">Certifications</div>
   </div>
 
   <div class="time-line-container mb-10">
-    <TimeLine
-      title="AWS Certified Solutions Architect"
-      subtitle="4/2015, Amazon Web Services"
-    />
-    <TimeLine
-      title="Certified SAFe Practitioner"
-      subtitle="10/2013, Scaled Agile Academy"
-    />
-    <TimeLine
-      title="Certified SAFe Agilist"
-      subtitle="5/2013, Scaled Agile Academy"
-    />
-    <TimeLine
-      title="Spring Professional"
-      subtitle="10/2012, SpringSource"
-    />
-    <TimeLine
-      title="Certified ScrumMaster"
-      subtitle="5/2012, ScrumAlliance"
-    />
+    <TimeLine title="AWS Certified Solutions Architect" subtitle="4/2015, Amazon Web Services" />
+    <TimeLine title="Certified SAFe Practitioner" subtitle="10/2013, Scaled Agile Academy" />
+    <TimeLine title="Certified SAFe Agilist" subtitle="5/2013, Scaled Agile Academy" />
+    <TimeLine title="Spring Professional" subtitle="10/2012, SpringSource" />
+    <TimeLine title="Certified ScrumMaster" subtitle="5/2012, ScrumAlliance" />
   </div>
 
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
+    <div class="w-full text-3xl font-bold">Education</div>
   </div>
 
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLine
-      title="Master of Science, Computer Science"
-      subtitle="1996 to 2001 at University of Helsinki"
-    >
+  <div class="time-line-container mb-10 grid gap-4">
+    <TimeLine title="Master of Science, Computer Science" subtitle="1996 to 2001 at University of Helsinki">
       <ul>
         <li>Major: software engineering</li>
         <li>1. minor: Mathematics</li>
         <li>2. minor: work psychology and leadership</li>
       </ul>
     </TimeLine>
-    <TimeLine
-      title="Spanish Language and Culture"
-      subtitle="2003 to 2003 at Universidad de Zaragoza, Spain"
-    />
+    <TimeLine title="Spanish Language and Culture" subtitle="2003 to 2003 at Universidad de Zaragoza, Spain" />
   </div>
 
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
+    <div class="w-full text-3xl font-bold">Skills</div>
   </div>
 
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    {skills.map(skill => <li>{skill}</li>)}
+  <ul class="mx-6 list-disc columns-2 md:columns-5">
+    {skills.map((skill) => <li>{skill}</li>)}
   </ul>
-</BaseLayout>
+</Layout>

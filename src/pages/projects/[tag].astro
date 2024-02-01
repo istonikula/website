@@ -1,24 +1,24 @@
 ---
-import { cx } from 'class-variance-authority'
 import { getCollection } from 'astro:content'
+import { cx } from 'class-variance-authority'
 
 import Layout from '@/components/Layout/Layout.astro'
-import { allTags } from '@/lib/tags'
 import ProjectCardFoss from '@/components/ProjectCardFoss.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
+import { allTags } from '@/lib/tags'
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects')
   const foss = await getCollection('foss')
   const tags = await allTags()
 
-  return tags.map(tag => ({
+  return tags.map((tag) => ({
     params: { tag },
-    props: { 
-      projects: projects.filter(x => x.data.tags.includes(tag)),
-      foss: foss.filter(x => x.data.tags.includes(tag)),
+    props: {
+      projects: projects.filter((x) => x.data.tags.includes(tag)),
+      foss: foss.filter((x) => x.data.tags.includes(tag)),
     },
-  }));
+  }))
 }
 
 const { tag } = Astro.params
@@ -26,18 +26,21 @@ const { projects, foss } = Astro.props
 ---
 
 <Layout title=`Projects with ${tag}` sideBarActiveItemID="projects">
-  {projects.map((p, idx) => (
-    <>
-      <div class={cx('divider my-0', { 'hidden': idx === 0})}></div>
-      <ProjectCardWork slug={p.slug} project={p.data} />
-    </>
-  ))}
+  {
+    projects.map((p, idx) => (
+      <>
+        <div class={cx('divider my-0', { hidden: idx === 0 })} />
+        <ProjectCardWork slug={p.slug} project={p.data} />
+      </>
+    ))
+  }
 
-  {foss.map((p, idx) => (
-    <div class={cx({ 'mt-16': idx === 0})}>
-      <div class={cx('divider my-0', { 'hidden': idx === 0})}></div>
-      <ProjectCardFoss project={p.data} />
-    </div>
-  ))}
-
+  {
+    foss.map((p, idx) => (
+      <div class={cx({ 'mt-16': idx === 0 })}>
+        <div class={cx('divider my-0', { hidden: idx === 0 })} />
+        <ProjectCardFoss project={p.data} />
+      </div>
+    ))
+  }
 </Layout>

@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+
 import HorizontalCard from './HorizontalCard.astro'
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 const { project } = Astro.props
 const badge = project.url.includes('github') ? 'GitHub' : ''
 ---
+
 <HorizontalCard
   title={project.title}
   img="/post_img.webp"

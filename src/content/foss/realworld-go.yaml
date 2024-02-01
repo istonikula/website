@@ -1,6 +1,6 @@
-title: "realworld-go"
-description: "A realworld api example app featuring Go, Gin and gRPC"
-url: "https://github.com/istonikula/realworld-go"
+title: 'realworld-go'
+description: 'A realworld api example app featuring Go, Gin and gRPC'
+url: 'https://github.com/istonikula/realworld-go'
 tags:
   - Go
   - Gin

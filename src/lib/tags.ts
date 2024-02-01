@@ -6,9 +6,12 @@ export async function allTags() {
 
   const tags = [
     ...new Set(
-      projects.map(x => x.data.tags).flat().concat(foss.map(x => x.data.tags).flat())
+      projects
+        .map((x) => x.data.tags)
+        .flat()
+        .concat(foss.map((x) => x.data.tags).flat()),
     ),
-  ];
+  ]
 
   return tags
 }
