@@ -1,8 +1,8 @@
-import { getCollection } from 'astro:content'
+import { allFoss, allProjects } from './projects'
 
 export async function allTags() {
-  const projects = await getCollection('projects')
-  const foss = await getCollection('foss')
+  const projects = await allProjects()
+  const foss = await allFoss()
 
   const tags = [
     ...new Set(

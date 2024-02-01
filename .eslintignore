@@ -1,3 +1,4 @@
+*.md
 .eslintrc.cjs
 dist
 node_modules

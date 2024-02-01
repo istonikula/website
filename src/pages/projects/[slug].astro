@@ -1,10 +1,9 @@
 ---
-import { getCollection } from 'astro:content'
-
 import Layout from '@/components/Layout/Layout.astro'
+import { allProjects } from '@/lib/projects'
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects')
+  const projects = await allProjects()
   return projects.map((project) => ({
     params: { slug: project.slug },
     props: { project },

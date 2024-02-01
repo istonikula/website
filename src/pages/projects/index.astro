@@ -1,14 +1,13 @@
 ---
-import { getCollection } from 'astro:content'
 import { cx } from 'class-variance-authority'
 
 import Layout from '@/components/Layout/Layout.astro'
 import ProjectCardFoss from '@/components/ProjectCardFoss.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
-import { topProjects } from '@/lib/topProjects'
+import { allFoss, allProjects } from '@/lib/projects'
 
-const projects = await topProjects()
-const foss = await getCollection('foss')
+const projects = await allProjects()
+const foss = await allFoss()
 ---
 
 <Layout title="Projects" sideBarActiveItemID="projects">

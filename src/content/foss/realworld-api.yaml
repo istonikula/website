@@ -1,3 +1,4 @@
+order: 1
 title: 'realworld-api'
 description: 'A realworld api example app featuring Arrow, Kotlin and Spring Boot'
 url: 'https://github.com/istonikula/realworld-api'

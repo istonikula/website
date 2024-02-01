@@ -1,15 +1,15 @@
 ---
-import { getCollection } from 'astro:content'
 import { cx } from 'class-variance-authority'
 
 import Layout from '@/components/Layout/Layout.astro'
 import ProjectCardFoss from '@/components/ProjectCardFoss.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
+import { allFoss, allProjects } from '@/lib/projects'
 import { allTags } from '@/lib/tags'
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects')
-  const foss = await getCollection('foss')
+  const projects = await allProjects()
+  const foss = await allFoss()
   const tags = await allTags()
 
   return tags.map((tag) => ({
