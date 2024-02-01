@@ -20,7 +20,7 @@ const { Content } = await project.render()
       <h1 class="title my-2 text-4xl font-bold">{project.data.title}</h1>
       <div>{project.data.customer}</div>
       <div>
-        From {project.data.from} to {project.data.to}, {project.data.role}
+        From {project.data.from} to {project.data.to}, <span class="whitespace-nowrap">{project.data.role}</span>
       </div>
       {
         project.data.tags?.map((tag) => (
