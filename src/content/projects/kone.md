@@ -8,7 +8,7 @@ to: '1/2018'
 tags:
   - React
   - TypeScript
-  - WorkWorkers
+  - WebWorkers
   - WebSockets
   - IndexedDB
   - NodeJS

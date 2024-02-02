@@ -14,9 +14,9 @@ tags:
   - Arrow
   - Spring Boot
   - Kotlin
-  - microservices
-  - api gateways
-  - functional programming
+  - Microservices
+  - Api Gateways
+  - Functional Programming
   - AWS
   - Docker
   - Terraform
