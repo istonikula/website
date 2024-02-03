@@ -5,6 +5,7 @@ import { reMonthYear } from '@/lib/date'
 const projectSchema = z.object({
   title: z.string(),
   description: z.string(),
+  icon: z.string().optional(),
   customer: z.string(),
   role: z.string(),
   from: z.string().regex(reMonthYear),

@@ -1,6 +1,7 @@
 ---
 title: 'Voltti'
 description: 'TODO'
+icon: 'bank'
 customer: 'City of Espoo'
 role: 'Full Stack Developer'
 from: '2/2018'

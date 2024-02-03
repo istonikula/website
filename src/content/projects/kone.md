@@ -1,6 +1,7 @@
 ---
 title: 'NeMO Sales Tool'
 description: 'TODO'
+icon: 'repair-tool'
 customer: 'KONE'
 role: 'Full Stack Developer'
 from: '2/2017'

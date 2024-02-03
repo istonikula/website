@@ -1,6 +1,7 @@
 ---
 title: 'Renewal of Sales Terminals'
 description: 'TODO'
+icon: 'diamond'
 customer: 'Veikkaus'
 role: 'Full Stack Developer'
 from: '10/2020'

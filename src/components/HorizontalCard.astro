@@ -1,9 +1,9 @@
 ---
-import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
 
 interface Props {
   title: string
-  img?: string
+  icon?: string
   desc: string
   url: string
   badge?: string
@@ -12,25 +12,14 @@ interface Props {
   target?: string
 }
 
-const { title, img, desc, url, badge, tags, target = '_blank' } = Astro.props
+const { title, icon, desc, url, badge, tags, target = '_blank' } = Astro.props
 const tag_url = Astro.props.tagUrl || '/tag'
 ---
 
 <div class="rounded-lg bg-base-100 transition ease-in-out hover:scale-[102%] hover:shadow-xl">
   <a href={url} target={target}>
     <div class="hero-content flex-col md:flex-row">
-      {
-        img && (
-          <Image
-            src={img}
-            width={750}
-            height={422}
-            format="webp"
-            alt={title}
-            class="hidden max-w-full rounded-lg md:block md:max-w-[13rem]"
-          />
-        )
-      }
+      {icon && <Icon name={icon} class="hidden h-16 w-16 md:block" />}
       <div class="w-full grow">
         <h1 class="text-xl font-bold">
           {title}

@@ -13,7 +13,7 @@ const { slug, project } = Astro.props
 
 <HorizontalCard
   title={`${project.title}, ${project.customer}`}
-  img="/post_img.webp"
+  icon={project.icon}
   desc={`From ${project.from} to ${project.to}, ${project.role}`}
   url={`/projects/${slug}`}
   target="_self"
