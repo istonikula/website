@@ -1,10 +1,10 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import type { Foss } from '@/data'
 
 import HorizontalCard from './HorizontalCard.astro'
 
 interface Props {
-  project: CollectionEntry<'foss'>['data']
+  project: Foss
 }
 
 const { project } = Astro.props

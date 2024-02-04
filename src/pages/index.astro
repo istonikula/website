@@ -5,7 +5,7 @@ import Layout from '@/components/Layout/Layout.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
 import { topProjects } from '@/lib/projects'
 
-const projects = await topProjects()
+const projects = topProjects()
 ---
 
 <Layout sideBarActiveItemID="home">
@@ -35,7 +35,7 @@ const projects = await topProjects()
     projects.map((p, idx) => (
       <>
         <div class={cx('divider my-0', { hidden: idx === 0 })} />
-        <ProjectCardWork slug={p.slug} project={p.data} />
+        <ProjectCardWork slug={p.slug} project={p} />
       </>
     ))
   }

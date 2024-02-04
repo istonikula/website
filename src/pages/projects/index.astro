@@ -4,27 +4,24 @@ import { cx } from 'class-variance-authority'
 import Layout from '@/components/Layout/Layout.astro'
 import ProjectCardFoss from '@/components/ProjectCardFoss.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
-import { allFoss, allProjects } from '@/lib/projects'
-
-const projects = await allProjects()
-const foss = await allFoss()
+import * as data from '@/data'
 ---
 
 <Layout title="Projects" sideBarActiveItemID="projects">
   {
-    projects.map((p, idx) => (
+    data.projects.map((p, idx) => (
       <>
         <div class={cx('divider my-0', { hidden: idx === 0 })} />
-        <ProjectCardWork slug={p.slug} project={p.data} />
+        <ProjectCardWork slug={p.slug} project={p} />
       </>
     ))
   }
 
   {
-    foss.map((p, idx) => (
+    data.foss.map((p, idx) => (
       <div class={cx({ 'mt-16': idx === 0 })}>
         <div class={cx('divider my-0', { hidden: idx === 0 })} />
-        <ProjectCardFoss project={p.data} />
+        <ProjectCardFoss project={p} />
       </div>
     ))
   }

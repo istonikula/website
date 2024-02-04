@@ -8,9 +8,9 @@ import { allTags } from '@/lib/tags'
 import Project from './_components/Project.astro'
 import TimeLine from './_components/TimeLine.astro'
 
-const projects = await topProjects()
+const projects = topProjects()
 const obsoleteTags = ['Azure', 'folktale', 'ramda', 'monocle-ts', 'Vue']
-const skills = (await allTags())
+const skills = allTags()
   .filter((x) => !obsoleteTags.includes(x))
   .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 ---

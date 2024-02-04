@@ -1,15 +1,12 @@
-import { allFoss, allProjects } from './projects'
+import { foss, projects } from '@/data'
 
-export async function allTags() {
-  const projects = await allProjects()
-  const foss = await allFoss()
-
+export function allTags() {
   const tags = [
     ...new Set(
       projects
-        .map((x) => x.data.tags)
+        .map((x) => x.tags)
         .flat()
-        .concat(foss.map((x) => x.data.tags).flat()),
+        .concat(foss.map((x) => x.tags).flat()),
     ),
   ]
 

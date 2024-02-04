@@ -1,6 +1,7 @@
 ---
-import { getEntry } from 'astro:content'
 import { truncate } from 'lodash-es'
+
+import { projects } from '@/data'
 
 import TimeLine from './TimeLine.astro'
 
@@ -9,20 +10,16 @@ interface Props {
 }
 const { slug } = Astro.props
 
-const p = (await getEntry('projects', slug))!
-const { Content } = await p.render()
-const desc = truncate(p.body, { length: 160 })
+const p = projects.find((x) => x.slug === slug)!
+const desc = truncate(p.paragraphs[0], { length: 160 })
 ---
 
-<TimeLine
-  title={`${p.data.title}, ${p.data.customer}`}
-  subtitle={`From ${p.data.from} to ${p.data.to}, ${p.data.role}`}
->
+<TimeLine title={`${p.title}, ${p.customer}`} subtitle={`From ${p.from} to ${p.to}, ${p.role}`}>
   <div class="prose-sm">
     <div class="md:hidden">
       {desc}
       <a class="underline" href={`/projects/${p.slug}`}>more</a>
     </div>
-    <div class="hidden md:block"><Content /></div>
+    <div class="hidden md:block">{p.paragraphs.map((x) => <p>{x}</p>)}</div>
   </div>
 </TimeLine>
