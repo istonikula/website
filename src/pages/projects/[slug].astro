@@ -18,7 +18,7 @@ const { project } = Astro.props
       <h1 class="title my-2 text-4xl font-bold">{project.title}</h1>
       <div>{project.customer}</div>
       <div>
-        From {project.from} to {project.to}, <span class="whitespace-nowrap">{project.role}</span>
+        {data.fromTo(project)}, <span class="whitespace-nowrap">{project.role}</span>
       </div>
       {
         project.tags?.map((tag) => (

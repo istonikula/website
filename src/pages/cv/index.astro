@@ -39,9 +39,33 @@ const skills = allTags()
     {
       employments.map((e, idx) => (
         <TimeLine last={idx === employments.length - 1}>
-          <div class="mb-2">
+          <div class="mb-4">
             <Title>{e.title}</Title>
-            <Subtitle>{`${fromTo(e)} ${e.employer}`}</Subtitle>
+            <Subtitle>
+              {`${fromTo(e)} ${e.employer}`}
+              {e.locations && `, ${e.locations?.join(' and ')}`}
+            </Subtitle>
+            {e.projectSlugs && (
+              <div>
+                Projects:
+                {e.projectSlugs
+                  ?.map((slug) => projects.find((x) => x.slug === slug)!)
+                  .map((p, idx) => (
+                    <>
+                      {idx !== 0 ? ', ' : ''}
+                      <a class="underline" href={`/projects/${p.slug}`}>
+                        {p.title}
+                      </a>
+                    </>
+                  ))}
+              </div>
+            )}
+            <div class="prose-sm mt-1">
+              {e.paragraphs?.map((p) => (
+                <p>{p}</p>
+              ))}
+              {e.tags && <p>Tech: {e.tags?.join(', ')}</p>}
+            </div>
           </div>
         </TimeLine>
       ))
