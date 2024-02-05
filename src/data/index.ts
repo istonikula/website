@@ -18,6 +18,11 @@ export type Foss = {
   tags: Tag[]
 }
 
+export type Cert = {
+  title: string
+  subtitle: string
+}
+
 export type Employment = {
   id: string
   employer: string
@@ -269,6 +274,29 @@ export const employments: Employment[] = [
     title: 'Software Engineer',
     from: '8/2000',
     to: '12/2002',
+  },
+]
+
+export const certs: Cert[] = [
+  {
+    title: 'AWS Certified Solutions Architect',
+    subtitle: '4/2015, Amazon Web Services',
+  },
+  {
+    title: 'Certified SAFe Practitioner',
+    subtitle: '10/2013, Scaled Agile Academy',
+  },
+  {
+    title: 'Certified SAFe Agilist',
+    subtitle: '5/2013, Scaled Agile Academy',
+  },
+  {
+    title: 'Spring Professional',
+    subtitle: '10/2012, SpringSource',
+  },
+  {
+    title: 'Certified ScrumMaster',
+    subtitle: '5/2012, ScrumAlliance',
   },
 ]
 

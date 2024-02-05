@@ -1,12 +1,12 @@
 ---
-import { cx } from 'class-variance-authority'
-
 import Layout from '@/components/Layout/Layout.astro'
-import { employments, fromTo, pinnedProjects } from '@/data'
+import { certs, employments, fromTo, pinnedProjects } from '@/data'
 import { allTags } from '@/lib/tags'
 
 import Project from './_components/Project.astro'
+import Subtitle from './_components/Subtitle.astro'
 import TimeLine from './_components/TimeLine.astro'
+import Title from './_components/Title.astro'
 
 const projects = pinnedProjects
 const obsoleteTags = ['Azure', 'folktale', 'ramda', 'monocle-ts', 'Vue']
@@ -20,12 +20,12 @@ const skills = allTags()
     <div class="w-full text-3xl font-bold">Project Experience</div>
   </div>
 
-  <div class="time-line-container mb-10">
+  <div class="mb-8">
     {
       projects.map((p, idx) => (
-        <div class={cx({ 'mt-4': idx !== 0 })}>
+        <TimeLine last={idx === projects.length - 1}>
           <Project slug={p.slug} />
-        </div>
+        </TimeLine>
       ))
     }
   </div>
@@ -34,35 +34,58 @@ const skills = allTags()
     <div class="w-full text-3xl font-bold">Employment</div>
   </div>
 
-  <div class="time-line-container mb-10">
-    {employments.map((e) => <TimeLine title={e.title} subtitle={`${fromTo(e)} ${e.employer}`} />)}
+  <div class="mb-8">
+    {
+      employments.map((e, idx) => (
+        <TimeLine last={idx === employments.length - 1}>
+          <div class="mb-2">
+            <Title>{e.title}</Title>
+            <Subtitle>{`${fromTo(e)} ${e.employer}`}</Subtitle>
+          </div>
+        </TimeLine>
+      ))
+    }
   </div>
 
   <div class="mb-5">
     <div class="w-full text-3xl font-bold">Certifications</div>
   </div>
 
-  <div class="time-line-container mb-10">
-    <TimeLine title="AWS Certified Solutions Architect" subtitle="4/2015, Amazon Web Services" />
-    <TimeLine title="Certified SAFe Practitioner" subtitle="10/2013, Scaled Agile Academy" />
-    <TimeLine title="Certified SAFe Agilist" subtitle="5/2013, Scaled Agile Academy" />
-    <TimeLine title="Spring Professional" subtitle="10/2012, SpringSource" />
-    <TimeLine title="Certified ScrumMaster" subtitle="5/2012, ScrumAlliance" />
+  <div class="mb-8">
+    {
+      certs.map((c, idx) => (
+        <TimeLine last={idx === certs.length - 1}>
+          <div class="mb-2">
+            <Title>{c.title}</Title>
+            <Subtitle>{c.subtitle}</Subtitle>
+          </div>
+        </TimeLine>
+      ))
+    }
   </div>
 
   <div class="mb-5">
     <div class="w-full text-3xl font-bold">Education</div>
   </div>
 
-  <div class="time-line-container mb-10 grid gap-4">
-    <TimeLine title="Master of Science, Computer Science" subtitle="1996 to 2001 at University of Helsinki">
-      <ul>
-        <li>Major: Software Engineering</li>
-        <li>1. Minor: Mathematics</li>
-        <li>2. Minor: Work Psychology and Leadership</li>
-      </ul>
+  <div class="mb-8 grid gap-4">
+    <TimeLine>
+      <div class="mb-2">
+        <Title>Master of Science, Computer Science</Title>
+        <Subtitle>1996 to 2001 at University of Helsinki</Subtitle>
+        <ul class="mt-2">
+          <li>Major: Software Engineering</li>
+          <li>1. Minor: Mathematics</li>
+          <li>2. Minor: Work Psychology and Leadership</li>
+        </ul>
+      </div>
     </TimeLine>
-    <TimeLine title="Spanish Language and Culture" subtitle="2003 to 2003 at Universidad de Zaragoza, Spain" />
+    <TimeLine last={true}>
+      <div class="mb-2">
+        <Title>Spanish Language and Culture</Title>
+        <Subtitle>2003 to 2003 at Universidad de Zaragoza, Spain</Subtitle>
+      </div>
+    </TimeLine>
   </div>
 
   <div class="mb-5">
