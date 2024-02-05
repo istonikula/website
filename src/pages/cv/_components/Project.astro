@@ -1,7 +1,7 @@
 ---
 import { truncate } from 'lodash-es'
 
-import { projects } from '@/data'
+import { fromTo, projects } from '@/data'
 
 import TimeLine from './TimeLine.astro'
 
@@ -14,7 +14,7 @@ const p = projects.find((x) => x.slug === slug)!
 const desc = truncate(p.paragraphs[0], { length: 160 })
 ---
 
-<TimeLine title={`${p.title}, ${p.customer}`} subtitle={`From ${p.from} to ${p.to}, ${p.role}`}>
+<TimeLine title={`${p.title}, ${p.customer}`} subtitle={`${fromTo(p)}, ${p.role}`}>
   <div class="prose-sm">
     <div class="md:hidden">
       {desc}

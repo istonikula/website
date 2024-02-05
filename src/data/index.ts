@@ -5,7 +5,7 @@ export type Project = {
   customer: 'City of Espoo' | 'KONE' | 'Veikkaus'
   role: 'Full Stack Developer'
   from: string
-  to: string
+  to?: string
   tags: Tag[]
   paragraphs: string[]
 }
@@ -16,6 +16,16 @@ export type Foss = {
   description: string
   url: string
   tags: Tag[]
+}
+
+export type Employment = {
+  id: string
+  employer: string
+  title: string
+  from: string
+  to?: string
+  tags?: Tag[]
+  paragraphs?: string[]
 }
 
 export type Tag =
@@ -143,6 +153,7 @@ export const projects: Project[] = [
     ],
   },
 ]
+export const pinnedProjects = projects.slice(0, 3)
 
 export const foss: Foss[] = [
   {
@@ -181,3 +192,86 @@ export const foss: Foss[] = [
     tags: ['TypeScript'],
   },
 ]
+
+export const employments: Employment[] = [
+  {
+    id: 'isto-nikula-oy',
+    employer: 'Isto Nikula Oy',
+    title: 'Freelance Software Consultant',
+    from: '9/2019',
+  },
+  {
+    id: 'reaktor',
+    employer: 'Reaktor',
+    title: 'Senior Software Architect',
+    from: '1/2017',
+    to: '9/2019',
+  },
+  {
+    id: 'signom',
+    employer: 'Signom',
+    title: 'Senior Software Architect',
+    from: '8/2015',
+    to: '12/2016',
+  },
+  {
+    id: 'nitor',
+    employer: 'Nitor',
+    title: 'Senior Software Architect',
+    from: '4/2011',
+    to: '7/2015',
+  },
+  {
+    id: 'airwide-fi',
+    employer: 'Airwide Solutions',
+    title: 'Senior Software Engineer, Finland',
+    from: '9/2008',
+    to: '4/2011',
+  },
+  {
+    id: 'airwide-es',
+    employer: 'Airwide Solutions, Spain',
+    title: 'Delivery Architect',
+    from: '9/2007',
+    to: '8/2008',
+  },
+  {
+    id: 'firsthop',
+    employer: 'First Hop, Spain',
+    title: 'Solution Architect',
+    from: '9/2006',
+    to: '11/2007',
+  },
+  {
+    id: 'quality',
+    employer: 'Quality Objects, Spain',
+    title: 'Consultant',
+    from: '9/2005',
+    to: '9/2006',
+  },
+  {
+    id: 'accenture',
+    employer: 'Accenture, Finland and Spain',
+    title: 'Consultant',
+    from: '3/2004',
+    to: '9/2005',
+  },
+  {
+    id: 'appelsiini',
+    employer: 'Appelsiini',
+    title: 'Software Engineer',
+    from: '9/2003',
+    to: '3/2004',
+  },
+  {
+    id: 'nokia',
+    employer: 'Nokia',
+    title: 'Software Engineer',
+    from: '8/2000',
+    to: '12/2002',
+  },
+]
+
+export function fromTo({ from, to }: { from: string; to?: string }) {
+  return to ? `From ${from} to ${to}` : `From ${from}`
+}

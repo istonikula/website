@@ -1,6 +1,8 @@
 ---
 import type { Project } from '@/data'
 
+import { fromTo } from '@/data'
+
 import HorizontalCard from './HorizontalCard.astro'
 
 interface Props {
@@ -14,7 +16,7 @@ const { slug, project } = Astro.props
 <HorizontalCard
   title={`${project.title}, ${project.customer}`}
   icon={project.icon}
-  desc={`From ${project.from} to ${project.to}, ${project.role}`}
+  desc={`${fromTo(project)}, ${project.role}`}
   url={`/projects/${slug}`}
   target="_self"
 />
