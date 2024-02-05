@@ -21,16 +21,16 @@ const tag_url = Astro.props.tagUrl || '/tag'
     <div class="hero-content flex-col md:flex-row">
       {icon && <Icon name={icon} class="hidden h-16 w-16 md:block" />}
       <div class="w-full grow">
-        <h1 class="text-xl font-bold">
+        <h1 class="flex items-center text-xl font-bold">
           {title}
-          {badge && <span class="badge badge-secondary badge-lg mx-2">{badge}</span>}
+          {badge && <span class="badge badge-secondary mx-2 sm:badge-lg">{badge}</span>}
         </h1>
         <p class="text-1xl py-1">{desc}</p>
         <div class="card-actions justify-end">
           {
             tags &&
               tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline badge-lg">
+                <a href={`${tag_url}/${tag}`} class="badge badge-outline sm:badge-lg">
                   {tag}
                 </a>
               ))
