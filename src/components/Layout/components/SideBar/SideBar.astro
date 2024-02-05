@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets'
 
+import profileImg from '@/assets/profile.webp'
+
 import Footer from './components/Footer.astro'
 import Menu from './components/Menu.astro'
 
@@ -13,15 +15,8 @@ const { sideBarActiveItemID } = Astro.props
     <div class="mx-auto mb-6 mt-5 w-fit">
       <a href="/">
         <div class="avatar m-auto block transition ease-in-out hover:scale-[102%]">
-          <div class="w-[8.5rem]">
-            <Image
-              class="mask mask-circle"
-              format="webp"
-              width={300}
-              height={300}
-              src="/profile.webp"
-              alt="Profile image"
-            />
+          <div class="w-[8.5rem] rounded-full">
+            <Image src={profileImg} alt="Profile image" />
           </div>
         </div>
       </a>

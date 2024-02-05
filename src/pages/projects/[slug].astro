@@ -1,36 +1,34 @@
 ---
 import Layout from '@/components/Layout/Layout.astro'
-import { allProjects } from '@/lib/projects'
+import * as data from '@/data'
 
-export async function getStaticPaths() {
-  const projects = await allProjects()
-  return projects.map((project) => ({
+export function getStaticPaths() {
+  return data.projects.map((project) => ({
     params: { slug: project.slug },
     props: { project },
   }))
 }
 
 const { project } = Astro.props
-const { Content } = await project.render()
 ---
 
-<Layout title={project.data.title}>
+<Layout title={project.title}>
   <main>
     <article class="prose max-w-[750px] prose-img:mx-auto">
-      <h1 class="title my-2 text-4xl font-bold">{project.data.title}</h1>
-      <div>{project.data.customer}</div>
+      <h1 class="title my-2 text-4xl font-bold">{project.title}</h1>
+      <div>{project.customer}</div>
       <div>
-        From {project.data.from} to {project.data.to}, <span class="whitespace-nowrap">{project.data.role}</span>
+        From {project.from} to {project.to}, <span class="whitespace-nowrap">{project.role}</span>
       </div>
       {
-        project.data.tags?.map((tag) => (
-          <a href={`/projects/${tag}`} class="badge badge-outline ml-2 no-underline">
+        project.tags?.map((tag) => (
+          <a href={`/projects/${tag}`} class="badge badge-outline badge-lg ml-2 no-underline">
             {tag}
           </a>
         ))
       }
       <div class="divider my-2"></div>
-      <Content />
+      {project.paragraphs.map((p) => <p>{p}</p>)}
     </article>
   </main>
 </Layout>

@@ -4,19 +4,17 @@ import { cx } from 'class-variance-authority'
 import Layout from '@/components/Layout/Layout.astro'
 import ProjectCardFoss from '@/components/ProjectCardFoss.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
-import { allFoss, allProjects } from '@/lib/projects'
+import * as data from '@/data'
 import { allTags } from '@/lib/tags'
 
-export async function getStaticPaths() {
-  const projects = await allProjects()
-  const foss = await allFoss()
-  const tags = await allTags()
+export function getStaticPaths() {
+  const tags = allTags()
 
   return tags.map((tag) => ({
     params: { tag },
     props: {
-      projects: projects.filter((x) => x.data.tags.includes(tag)),
-      foss: foss.filter((x) => x.data.tags.includes(tag)),
+      projects: data.projects.filter((x) => x.tags.includes(tag)),
+      foss: data.foss.filter((x) => x.tags.includes(tag)),
     },
   }))
 }
@@ -30,7 +28,7 @@ const { projects, foss } = Astro.props
     projects.map((p, idx) => (
       <>
         <div class={cx('divider my-0', { hidden: idx === 0 })} />
-        <ProjectCardWork slug={p.slug} project={p.data} />
+        <ProjectCardWork slug={p.slug} project={p} />
       </>
     ))
   }
@@ -39,7 +37,7 @@ const { projects, foss } = Astro.props
     foss.map((p, idx) => (
       <div class={cx({ 'mt-16': idx === 0 })}>
         <div class={cx('divider my-0', { hidden: idx === 0 })} />
-        <ProjectCardFoss project={p.data} />
+        <ProjectCardFoss project={p} />
       </div>
     ))
   }

@@ -3,9 +3,9 @@ import { cx } from 'class-variance-authority'
 
 import Layout from '@/components/Layout/Layout.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
-import { topProjects } from '@/lib/projects'
+import { pinnedProjects } from '@/data'
 
-const projects = await topProjects()
+const projects = pinnedProjects
 ---
 
 <Layout sideBarActiveItemID="home">
@@ -35,7 +35,7 @@ const projects = await topProjects()
     projects.map((p, idx) => (
       <>
         <div class={cx('divider my-0', { hidden: idx === 0 })} />
-        <ProjectCardWork slug={p.slug} project={p.data} />
+        <ProjectCardWork slug={p.slug} project={p} />
       </>
     ))
   }

@@ -1,16 +1,16 @@
 ---
-import { cx } from 'class-variance-authority'
-
 import Layout from '@/components/Layout/Layout.astro'
-import { topProjects } from '@/lib/projects'
+import { certs, employments, fromTo, pinnedProjects } from '@/data'
 import { allTags } from '@/lib/tags'
 
 import Project from './_components/Project.astro'
+import Subtitle from './_components/Subtitle.astro'
 import TimeLine from './_components/TimeLine.astro'
+import Title from './_components/Title.astro'
 
-const projects = await topProjects()
+const projects = pinnedProjects
 const obsoleteTags = ['Azure', 'folktale', 'ramda', 'monocle-ts', 'Vue']
-const skills = (await allTags())
+const skills = allTags()
   .filter((x) => !obsoleteTags.includes(x))
   .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 ---
@@ -20,12 +20,12 @@ const skills = (await allTags())
     <div class="w-full text-3xl font-bold">Project Experience</div>
   </div>
 
-  <div class="time-line-container mb-10">
+  <div class="mb-8">
     {
       projects.map((p, idx) => (
-        <div class={cx({ 'mt-4': idx !== 0 })}>
+        <TimeLine last={idx === projects.length - 1}>
           <Project slug={p.slug} />
-        </div>
+        </TimeLine>
       ))
     }
   </div>
@@ -34,45 +34,58 @@ const skills = (await allTags())
     <div class="w-full text-3xl font-bold">Employment</div>
   </div>
 
-  <div class="time-line-container mb-10">
-    <TimeLine title="Freelance Software Consultant" subtitle="From 9/2019 at Isto Nikula Oy" />
-    <TimeLine title="Senior Software Architect" subtitle="From 1/2017 to 9/2019 at Reaktor" />
-    <TimeLine title="Senior Software Architect" subtitle="From 8/2015 to 12/2016 at Signom" />
-    <TimeLine title="Senior Software Architect" subtitle="From 4/2011 to 7/2015 at Nitor" />
-    <TimeLine title="Senior Software Engineer" subtitle="From 9/2008 to 4/2011 at Airwide Solutions, Finland" />
-    <TimeLine title="Delivery Architect" subtitle="From 11/2007 to 8/2008 at Airwide Solutions, Spain" />
-    <TimeLine title="Solution Architect" subtitle="From 9/2006 to 11/2007 at First Hop, Spain" />
-    <TimeLine title="Consultant" subtitle="From 9/2005 to 9/2006 at Quality Objects, Spain" />
-    <TimeLine title="Consultant" subtitle="From 3/2004 to 9/2005 at Accenture, Finland and Spain" />
-    <TimeLine title="Software Engineer" subtitle="From 9/2003 to 3/2004 at Appelsiini" />
-    <TimeLine title="Software Engineer" subtitle="From 8/2000 to 12/2002 at Nokia" />
+  <div class="mb-8">
+    {
+      employments.map((e, idx) => (
+        <TimeLine last={idx === employments.length - 1}>
+          <div class="mb-2">
+            <Title>{e.title}</Title>
+            <Subtitle>{`${fromTo(e)} ${e.employer}`}</Subtitle>
+          </div>
+        </TimeLine>
+      ))
+    }
   </div>
 
   <div class="mb-5">
     <div class="w-full text-3xl font-bold">Certifications</div>
   </div>
 
-  <div class="time-line-container mb-10">
-    <TimeLine title="AWS Certified Solutions Architect" subtitle="4/2015, Amazon Web Services" />
-    <TimeLine title="Certified SAFe Practitioner" subtitle="10/2013, Scaled Agile Academy" />
-    <TimeLine title="Certified SAFe Agilist" subtitle="5/2013, Scaled Agile Academy" />
-    <TimeLine title="Spring Professional" subtitle="10/2012, SpringSource" />
-    <TimeLine title="Certified ScrumMaster" subtitle="5/2012, ScrumAlliance" />
+  <div class="mb-8">
+    {
+      certs.map((c, idx) => (
+        <TimeLine last={idx === certs.length - 1}>
+          <div class="mb-2">
+            <Title>{c.title}</Title>
+            <Subtitle>{c.subtitle}</Subtitle>
+          </div>
+        </TimeLine>
+      ))
+    }
   </div>
 
   <div class="mb-5">
     <div class="w-full text-3xl font-bold">Education</div>
   </div>
 
-  <div class="time-line-container mb-10 grid gap-4">
-    <TimeLine title="Master of Science, Computer Science" subtitle="1996 to 2001 at University of Helsinki">
-      <ul>
-        <li>Major: software engineering</li>
-        <li>1. minor: Mathematics</li>
-        <li>2. minor: work psychology and leadership</li>
-      </ul>
+  <div class="mb-8 grid gap-4">
+    <TimeLine>
+      <div class="mb-2">
+        <Title>Master of Science, Computer Science</Title>
+        <Subtitle>1996 to 2001 at University of Helsinki</Subtitle>
+        <ul class="mt-2">
+          <li>Major: Software Engineering</li>
+          <li>1. Minor: Mathematics</li>
+          <li>2. Minor: Work Psychology and Leadership</li>
+        </ul>
+      </div>
     </TimeLine>
-    <TimeLine title="Spanish Language and Culture" subtitle="2003 to 2003 at Universidad de Zaragoza, Spain" />
+    <TimeLine last={true}>
+      <div class="mb-2">
+        <Title>Spanish Language and Culture</Title>
+        <Subtitle>2003 to 2003 at Universidad de Zaragoza, Spain</Subtitle>
+      </div>
+    </TimeLine>
   </div>
 
   <div class="mb-5">
