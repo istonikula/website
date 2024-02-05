@@ -4,25 +4,38 @@ import { cx } from 'class-variance-authority'
 import Layout from '@/components/Layout/Layout.astro'
 import ProjectCardFoss from '@/components/ProjectCardFoss.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
+import SectionHeading from '@/components/SectionHeading.astro'
 import * as data from '@/data'
 ---
 
 <Layout title="Projects" sideBarActiveItemID="projects">
-  {
-    data.projects.map((p, idx) => (
-      <>
-        <div class={cx('divider my-0', { hidden: idx === 0 })} />
-        <ProjectCardWork slug={p.slug} project={p} />
-      </>
-    ))
-  }
+  <div class="mb-5">
+    <SectionHeading>Work Projects</SectionHeading>
+  </div>
 
-  {
-    data.foss.map((p, idx) => (
-      <div class={cx({ 'mt-16': idx === 0 })}>
-        <div class={cx('divider my-0', { hidden: idx === 0 })} />
-        <ProjectCardFoss project={p} />
-      </div>
-    ))
-  }
+  <div class="mb-10">
+    {
+      data.projects.map((p, idx) => (
+        <>
+          <div class={cx('divider my-0', { hidden: idx === 0 })} />
+          <ProjectCardWork slug={p.slug} project={p} />
+        </>
+      ))
+    }
+  </div>
+
+  <div class="mb-5">
+    <SectionHeading>Personal Projects</SectionHeading>
+  </div>
+
+  <div>
+    {
+      data.foss.map((p, idx) => (
+        <>
+          <div class={cx('divider my-0', { hidden: idx === 0 })} />
+          <ProjectCardFoss project={p} />
+        </>
+      ))
+    }
+  </div>
 </Layout>

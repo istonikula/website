@@ -1,5 +1,6 @@
 ---
 import Layout from '@/components/Layout/Layout.astro'
+import SectionHeading from '@/components/SectionHeading.astro'
 import { certs, employments, fromTo, pinnedProjects } from '@/data'
 import { allTags } from '@/lib/tags'
 
@@ -17,7 +18,7 @@ const skills = allTags()
 
 <Layout title="Resume" sideBarActiveItemID="cv">
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Project Experience</div>
+    <SectionHeading>Project Experience</SectionHeading>
   </div>
 
   <div class="mb-8">
@@ -31,7 +32,7 @@ const skills = allTags()
   </div>
 
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Employment</div>
+    <SectionHeading>Employment</SectionHeading>
   </div>
 
   <div class="mb-8">
@@ -48,7 +49,7 @@ const skills = allTags()
   </div>
 
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Certifications</div>
+    <SectionHeading>Certifications</SectionHeading>
   </div>
 
   <div class="mb-8">
@@ -65,7 +66,7 @@ const skills = allTags()
   </div>
 
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Education</div>
+    <SectionHeading>Education</SectionHeading>
   </div>
 
   <div class="mb-8 grid gap-4">
@@ -89,7 +90,7 @@ const skills = allTags()
   </div>
 
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Skills</div>
+    <SectionHeading>Skills</SectionHeading>
   </div>
 
   <ul class="mx-6 list-disc columns-2 md:columns-5">

@@ -3,6 +3,7 @@ import { cx } from 'class-variance-authority'
 
 import Layout from '@/components/Layout/Layout.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
+import SectionHeading from '@/components/SectionHeading.astro'
 import { pinnedProjects } from '@/data'
 
 const projects = pinnedProjects
@@ -11,7 +12,9 @@ const projects = pinnedProjects
 <Layout sideBarActiveItemID="home">
   <div class="mt-5 pb-12">
     <div class="text-5xl font-bold">Isto Nikula</div>
-    <div class="mt-3 text-3xl font-bold">Freelance Full Stack Developer</div>
+    <div class="mt-3">
+      <SectionHeading>Freelance Full Stack Developer</SectionHeading>
+    </div>
     <div class="prose-sm mt-5">
       <p>
         I'm a results-driven Software Architect with expertise in designing and implementing robust full stack
@@ -27,8 +30,8 @@ const projects = pinnedProjects
     </div>
   </div>
 
-  <div>
-    <div class="mb-2 w-full text-3xl font-bold">Latest Projects</div>
+  <div class="mb-2">
+    <SectionHeading>Latest Projects</SectionHeading>
   </div>
 
   {
