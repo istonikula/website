@@ -1,8 +1,10 @@
 ---
+import type { Tag } from '@/data'
+
 import Layout from '@/components/Layout/Layout.astro'
 import SectionHeading from '@/components/SectionHeading.astro'
-import { certs, employments, fromTo, pinnedProjects } from '@/data'
-import { allTags } from '@/lib/tags'
+import { allProjectTags, certs, employments, pinnedProjects } from '@/data'
+import * as fmt from '@/lib/format'
 
 import Project from './_components/Project.astro'
 import Subtitle from './_components/Subtitle.astro'
@@ -10,9 +12,9 @@ import TimeLine from './_components/TimeLine.astro'
 import Title from './_components/Title.astro'
 
 const projects = pinnedProjects
-const obsoleteTags = ['Azure', 'folktale', 'ramda', 'monocle-ts', 'Vue']
-const skills = allTags()
-  .filter((x) => !obsoleteTags.includes(x))
+const skipSkills: Tag[] = ['Azure', 'folktale', 'monocle-ts', 'PureScript', 'ramda', 'Vue']
+const skills = allProjectTags()
+  .filter((x) => !skipSkills.includes(x))
   .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 ---
 
@@ -42,7 +44,7 @@ const skills = allTags()
           <div class="mb-4">
             <Title>{e.title}</Title>
             <Subtitle>
-              {`${fromTo(e)} ${e.employer}`}
+              {`${fmt.fromTo(e)} ${e.employer}`}
               {e.locations && `, ${e.locations?.join(' and ')}`}
             </Subtitle>
             {e.projectSlugs && (

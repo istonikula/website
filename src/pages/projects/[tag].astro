@@ -6,10 +6,9 @@ import ProjectCardFoss from '@/components/ProjectCardFoss.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
 import SectionHeading from '@/components/SectionHeading.astro'
 import * as data from '@/data'
-import { allTags } from '@/lib/tags'
 
 export function getStaticPaths() {
-  const tags = allTags()
+  const tags = data.allProjectTags()
 
   return tags.map((tag) => ({
     params: { tag },
