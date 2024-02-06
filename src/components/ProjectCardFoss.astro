@@ -8,14 +8,14 @@ interface Props {
 }
 
 const { project } = Astro.props
-const badge = project.url.includes('github') ? 'GitHub' : ''
+const badges = project.url.includes('github') ? ['GitHub'] : undefined
 ---
 
 <HorizontalCard
   title={project.title}
   desc={project.description}
   url={project.url}
-  badge={badge}
+  badges={badges}
   tags={project.tags}
   tagUrl="/projects"
 />

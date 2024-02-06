@@ -4,11 +4,11 @@ import { cx } from 'class-variance-authority'
 import Layout from '@/components/Layout/Layout.astro'
 import ProjectCardFoss from '@/components/ProjectCardFoss.astro'
 import ProjectCardWork from '@/components/ProjectCardWork.astro'
+import SectionHeading from '@/components/SectionHeading.astro'
 import * as data from '@/data'
-import { allTags } from '@/lib/tags'
 
 export function getStaticPaths() {
-  const tags = allTags()
+  const tags = data.allProjectTags()
 
   return tags.map((tag) => ({
     params: { tag },
@@ -23,7 +23,11 @@ const { tag } = Astro.params
 const { projects, foss } = Astro.props
 ---
 
-<Layout title=`Projects with ${tag}` sideBarActiveItemID="projects">
+<Layout title={`Projects with '${tag}'`} sideBarActiveItemID="projects">
+  <div class="mb-5">
+    <SectionHeading>Projects with <i>{tag}</i></SectionHeading>
+  </div>
+
   {
     projects.map((p, idx) => (
       <>
@@ -35,10 +39,10 @@ const { projects, foss } = Astro.props
 
   {
     foss.map((p, idx) => (
-      <div class={cx({ 'mt-16': idx === 0 })}>
-        <div class={cx('divider my-0', { hidden: idx === 0 })} />
+      <>
+        <div class={cx('divider my-0', { hidden: idx === 0 && projects.length === 0 })} />
         <ProjectCardFoss project={p} />
-      </div>
+      </>
     ))
   }
 </Layout>

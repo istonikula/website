@@ -1,7 +1,7 @@
 ---
 import type { Project } from '@/data'
 
-import { fromTo } from '@/data'
+import * as fmt from '@/lib/format'
 
 import HorizontalCard from './HorizontalCard.astro'
 
@@ -16,7 +16,7 @@ const { slug, project } = Astro.props
 <HorizontalCard
   title={`${project.title}, ${project.customer}`}
   icon={project.icon}
-  desc={`${fromTo(project)}, ${project.role}`}
+  desc={`${fmt.fromTo(project)}, ${project.role}`}
   url={`/projects/${slug}`}
   target="_self"
 />

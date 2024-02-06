@@ -1,7 +1,10 @@
 ---
+import type { Tag } from '@/data'
+
 import Layout from '@/components/Layout/Layout.astro'
-import { certs, employments, fromTo, pinnedProjects } from '@/data'
-import { allTags } from '@/lib/tags'
+import SectionHeading from '@/components/SectionHeading.astro'
+import { allProjectTags, certs, employments, pinnedProjects } from '@/data'
+import * as fmt from '@/lib/format'
 
 import Project from './_components/Project.astro'
 import Subtitle from './_components/Subtitle.astro'
@@ -9,15 +12,15 @@ import TimeLine from './_components/TimeLine.astro'
 import Title from './_components/Title.astro'
 
 const projects = pinnedProjects
-const obsoleteTags = ['Azure', 'folktale', 'ramda', 'monocle-ts', 'Vue']
-const skills = allTags()
-  .filter((x) => !obsoleteTags.includes(x))
+const skipSkills: Tag[] = ['Azure', 'folktale', 'monocle-ts', 'PureScript', 'ramda', 'Vue']
+const skills = allProjectTags()
+  .filter((x) => !skipSkills.includes(x))
   .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
 ---
 
 <Layout title="Resume" sideBarActiveItemID="cv">
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Project Experience</div>
+    <SectionHeading>Project Experience</SectionHeading>
   </div>
 
   <div class="mb-8">
@@ -31,16 +34,47 @@ const skills = allTags()
   </div>
 
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Employment</div>
+    <SectionHeading>Employment</SectionHeading>
   </div>
 
   <div class="mb-8">
     {
       employments.map((e, idx) => (
         <TimeLine last={idx === employments.length - 1}>
-          <div class="mb-2">
+          <div class="mb-4">
             <Title>{e.title}</Title>
-            <Subtitle>{`${fromTo(e)} ${e.employer}`}</Subtitle>
+            <Subtitle>
+              {`${fmt.fromTo(e)} ${e.employer}`}
+              {e.locations && `, ${e.locations?.join(' and ')}`}
+            </Subtitle>
+            {e.contentSlug && (
+              <div>
+                <a class="underline" href={`/employment/${e.contentSlug}`}>
+                  Details
+                </a>
+              </div>
+            )}
+            {e.projectSlugs && (
+              <div>
+                Projects:
+                {e.projectSlugs
+                  ?.map((slug) => projects.find((x) => x.slug === slug)!)
+                  .map((p, idx) => (
+                    <>
+                      {idx !== 0 ? ', ' : ''}
+                      <a class="underline" href={`/projects/${p.slug}`}>
+                        {p.title}
+                      </a>
+                    </>
+                  ))}
+              </div>
+            )}
+            <div class="prose-sm mt-1">
+              {e.paragraphs?.map((p) => (
+                <p>{p}</p>
+              ))}
+              {e.tags && <p>Tech: {e.tags?.join(', ')}</p>}
+            </div>
           </div>
         </TimeLine>
       ))
@@ -48,7 +82,7 @@ const skills = allTags()
   </div>
 
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Certifications</div>
+    <SectionHeading>Certifications</SectionHeading>
   </div>
 
   <div class="mb-8">
@@ -65,7 +99,7 @@ const skills = allTags()
   </div>
 
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Education</div>
+    <SectionHeading>Education</SectionHeading>
   </div>
 
   <div class="mb-8 grid gap-4">
@@ -89,7 +123,7 @@ const skills = allTags()
   </div>
 
   <div class="mb-5">
-    <div class="w-full text-3xl font-bold">Skills</div>
+    <SectionHeading>Skills</SectionHeading>
   </div>
 
   <ul class="mx-6 list-disc columns-2 md:columns-5">

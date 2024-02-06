@@ -6,13 +6,13 @@ interface Props {
   icon?: string
   desc: string
   url: string
-  badge?: string
+  badges?: string[]
   tags?: string[]
   tagUrl?: string
   target?: string
 }
 
-const { title, icon, desc, url, badge, tags, target = '_blank' } = Astro.props
+const { title, icon, desc, url, badges, tags, target = '_blank' } = Astro.props
 const tag_url = Astro.props.tagUrl || '/tag'
 ---
 
@@ -23,7 +23,7 @@ const tag_url = Astro.props.tagUrl || '/tag'
       <div class="w-full grow">
         <h1 class="flex items-center text-xl font-bold">
           {title}
-          {badge && <span class="badge badge-secondary mx-2 sm:badge-lg">{badge}</span>}
+          {badges?.map((badge) => <span class="badge badge-secondary ml-2 sm:badge-lg">{badge}</span>)}
         </h1>
         <p class="text-1xl py-1">{desc}</p>
         <div class="card-actions justify-end">
