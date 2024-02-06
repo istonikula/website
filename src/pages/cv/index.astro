@@ -47,6 +47,13 @@ const skills = allProjectTags()
               {`${fmt.fromTo(e)} ${e.employer}`}
               {e.locations && `, ${e.locations?.join(' and ')}`}
             </Subtitle>
+            {e.contentSlug && (
+              <div>
+                <a class="underline" href={`/employment/${e.contentSlug}`}>
+                  Details
+                </a>
+              </div>
+            )}
             {e.projectSlugs && (
               <div>
                 Projects:

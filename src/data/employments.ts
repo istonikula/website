@@ -1,3 +1,4 @@
+import type { CollectionEntry } from 'astro:content'
 import type { Tag } from './tags'
 
 export type Employment = {
@@ -10,6 +11,7 @@ export type Employment = {
   tags?: Tag[]
   paragraphs?: string[]
   projectSlugs?: string[]
+  contentSlug?: CollectionEntry<'employment'>['slug']
 }
 
 export const employments: Employment[] = [
@@ -45,6 +47,7 @@ export const employments: Employment[] = [
     title: 'Senior Software Architect',
     from: '4/2011',
     to: '7/2015',
+    contentSlug: 'nitor',
   },
   {
     id: 'airwide-fi',
