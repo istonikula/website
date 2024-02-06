@@ -1,6 +1,6 @@
 ---
 employer: 'Nitor'
-from: '4/2014'
+from: '4/2011'
 to: '7/2015'
 title: 'Senior Software Architech'
 ---
