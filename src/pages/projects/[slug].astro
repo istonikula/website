@@ -21,13 +21,15 @@ const { project } = Astro.props
       <div>
         {fmt.fromTo(project)}, <span class="whitespace-nowrap">{project.role}</span>
       </div>
-      {
-        project.tags?.map((tag) => (
-          <a href={`/projects/${tag}`} class="badge badge-outline badge-lg ml-2 no-underline">
-            {tag}
-          </a>
-        ))
-      }
+      <div class="mt-2 flex flex-wrap gap-2">
+        {
+          project.tags?.map((tag) => (
+            <a href={`/projects/${tag}`} class="badge badge-outline badge-lg no-underline">
+              {tag}
+            </a>
+          ))
+        }
+      </div>
       <div class="divider my-2"></div>
       {project.paragraphs.map((p) => <p>{p}</p>)}
     </article>
