@@ -3,7 +3,7 @@ import type { Tag } from '@/data'
 
 import Layout from '@/components/Layout/Layout.astro'
 import SectionHeading from '@/components/SectionHeading.astro'
-import { allProjectTags, certs, employments, pinnedProjects } from '@/data'
+import { allProjectTags, certs, employments, projects } from '@/data'
 import * as fmt from '@/lib/format'
 
 import Project from './_components/Project.astro'
@@ -11,7 +11,6 @@ import Subtitle from './_components/Subtitle.astro'
 import TimeLine from './_components/TimeLine.astro'
 import Title from './_components/Title.astro'
 
-const projects = pinnedProjects
 const skipSkills: Tag[] = ['Azure', 'folktale', 'monocle-ts', 'PureScript', 'ramda', 'Vue']
 const skills = allProjectTags()
   .filter((x) => !skipSkills.includes(x))

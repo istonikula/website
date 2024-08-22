@@ -4,7 +4,7 @@ export type Project = {
   slug: string
   title: string
   icon: 'bank' | 'diamond' | 'repair-tool'
-  customer: 'City of Espoo' | 'KONE' | 'Veikkaus'
+  customer: 'City of Espoo' | 'Evli' | 'KONE' | 'Veikkaus'
   role: 'Full Stack Developer'
   from: string
   to?: string
@@ -13,6 +13,31 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'evli',
+    title: 'Client Assessment Tool',
+    icon: 'repair-tool',
+    customer: 'Evli',
+    role: 'Full Stack Developer',
+    from: '4/2024',
+    to: '9/2024',
+    tags: [
+      'Balsamiq',
+      'React',
+      'TanStack Query',
+      'TanStack Router',
+      'TypeScript',
+      'NodeJS',
+      'TypeORM',
+      'Express',
+      'Docker',
+      'Azure DevOps',
+    ],
+    paragraphs: [
+      "A greenfield project related to appropriateness and suitability of Evli's product offering to existing and new customers. The main purpose was to gather product and customer data from several data sources and visualize it in a consistent way that supported assessment of customer's current portfolio and identify any necessary changes.",
+      'I worked as a one-person team, handling every aspect of the new application, from UX design to integrations and everything in between.',
+    ],
+  },
   {
     slug: 'veikkaus',
     title: 'Renewal of Sales Terminals',
