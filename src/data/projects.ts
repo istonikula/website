@@ -4,7 +4,7 @@ export type Project = {
   slug: string
   title: string
   icon: 'bank' | 'diamond' | 'repair-tool'
-  customer: 'City of Espoo' | 'Evli' | 'KONE' | 'Veikkaus'
+  customer: 'City of Espoo' | 'Elisa' | 'Evli' | 'KONE' | 'Veikkaus'
   role: 'Full Stack Developer'
   from: string
   to?: string
@@ -13,6 +13,20 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'elisa',
+    title: 'Centralized Customer Identity and Data Platform',
+    icon: 'bank',
+    customer: 'Elisa',
+    role: 'Full Stack Developer',
+    from: '10/2024',
+    // to: 'xx/xxxx',
+    tags: ['Go', 'Java', 'Spring Boot', 'Kafka', 'GitHub Actions', 'Kubernetes'],
+    paragraphs: [
+      'Developer in the ECC (Elisa Capabilities for Common Identity and Experience) team, a core initiative to centralize customer identity and data in real-time with a mission to enhance data quality, privacy, and user experience.',
+      'My work involved developing and maintaining resilient backend microservices while engineering secure RESTful APIs for high-traffic digital services. This work was performed in close collaboration with stakeholders to enhance data models and improve the overall platform architecture.',
+    ],
+  },
   {
     slug: 'evli',
     title: 'Client Assessment Tool',

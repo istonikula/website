@@ -20,7 +20,7 @@ export const employments: Employment[] = [
     employer: 'Isto Nikula Oy',
     title: 'Freelance Software Consultant',
     from: '9/2019',
-    projectSlugs: ['evli', 'veikkaus', 'voltti'],
+    projectSlugs: ['elisa', 'evli', 'veikkaus', 'voltti'],
   },
   {
     id: 'reaktor',
