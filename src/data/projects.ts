@@ -3,9 +3,9 @@ import type { Tag } from './tags'
 export type Project = {
   slug: string
   title: string
-  icon: 'bank' | 'diamond' | 'repair-tool'
+  icon: 'bank' | 'diamond' | 'repair-tool' | 'robot'
   customer: 'City of Espoo' | 'Elisa' | 'Evli' | 'KONE' | 'Veikkaus'
-  role: 'Full Stack Developer'
+  role: 'Full Stack Developer' | 'Resident Organic Intelligence'
   from: string
   to?: string
   tags: Tag[]
@@ -14,13 +14,30 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'veikkaus-ai',
+    title: 'Sales Terminals',
+    icon: 'robot',
+    customer: 'Veikkaus',
+    role: 'Resident Organic Intelligence',
+    from: '3/2026',
+    tags: [
+      'Claude',
+      'Gemini',
+      'Open AI',
+      'Human In The Loop',
+    ],
+    paragraphs: [
+      'Agentifying...',
+    ],
+  },
+  {
     slug: 'elisa',
     title: 'Centralized Customer Identity and Data Platform',
     icon: 'bank',
     customer: 'Elisa',
     role: 'Full Stack Developer',
     from: '10/2024',
-    // to: 'xx/xxxx',
+    to: '2/2026',
     tags: ['Go', 'Java', 'Spring Boot', 'Kafka', 'GitHub Actions', 'Kubernetes'],
     paragraphs: [
       'Developer in the ECC (Elisa Capabilities for Common Identity and Experience) team, a core initiative to centralize customer identity and data in real-time with a mission to enhance data quality, privacy, and user experience.',

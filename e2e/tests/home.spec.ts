@@ -21,9 +21,9 @@ test.describe('Home page', () => {
   test('displays bio paragraphs with expected content', async ({ page }) => {
     const home = new HomePage(page)
     const paras = home.bioParagraphs
-    await expect(paras).toHaveCount(2)
-    await expect(paras.first()).toContainText('results-driven Software Architect')
-    await expect(paras.last()).toContainText('exploring Go and Rust')
+    await expect(paras).toHaveCount(3)
+    await expect(paras.first()).toContainText('designing robust software systems')
+    await expect(paras.last()).toContainText('Organic Intelligence')
   })
 
   test('shows "Latest Projects" with exactly 3 cards', async ({ page }) => {
