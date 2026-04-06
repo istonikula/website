@@ -1,4 +1,4 @@
-import { type Page } from '@playwright/test'
+import { expect, type Page } from '@playwright/test'
 
 export class LayoutPage {
   readonly page: Page
@@ -55,6 +55,25 @@ export class LayoutPage {
     await this.openDrawerIfMobile()
     await this.menuLinks.filter({ hasText: name }).click()
     await this.page.waitForLoadState('networkidle')
+  }
+
+  menuLink(name: 'Home' | 'Projects' | 'CV') {
+    return this.menuLinks.filter({ hasText: name })
+  }
+
+  async resetHover() {
+    await this.page.mouse.move(0, 0)
+  }
+
+  async assertMenuItemSelected(name: 'Home' | 'Projects' | 'CV', isSelected: boolean) {
+    // An unselected/unhovered menu item has no background of its own — it's transparent (rgba(0,0,0,0))
+    // and visually blends into the sidebar. A selected or hovered item has an explicit background color.
+    const assertion = expect(this.menuLink(name))
+    if (isSelected) {
+      await assertion.not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)')
+    } else {
+      await assertion.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)')
+    }
   }
 
   async getActiveMenuItemId() {
