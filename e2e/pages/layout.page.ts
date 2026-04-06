@@ -43,12 +43,16 @@ export class LayoutPage {
     return this.page.locator('footer')
   }
 
-  async navigateViaMenu(name: 'Home' | 'Projects' | 'CV') {
-    // On mobile the sidebar is off-screen until the hamburger is clicked
+  async openDrawerIfMobile() {
     const viewport = this.page.viewportSize()
     if (viewport && viewport.width < 1024) {
       await this.hamburgerButton.click()
     }
+  }
+
+  async navigateViaMenu(name: 'Home' | 'Projects' | 'CV') {
+    // On mobile the sidebar is off-screen until the hamburger is clicked
+    await this.openDrawerIfMobile()
     await this.menuLinks.filter({ hasText: name }).click()
     await this.page.waitForLoadState('networkidle')
   }

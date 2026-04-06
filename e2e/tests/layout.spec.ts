@@ -32,6 +32,7 @@ test.describe('Layout - Navigation', () => {
   test('sidebar has profile image', async ({ page }) => {
     const layout = new LayoutPage(page)
     await page.goto('/')
+    await layout.openDrawerIfMobile()
     await expect(layout.profileImage).toBeVisible()
   })
 

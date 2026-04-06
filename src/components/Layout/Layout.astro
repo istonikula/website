@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import { ClientRouter } from 'astro:transitions'
 
 import { SITE_DESCRIPTION, SITE_TITLE, TRANSITION_API } from '../../config'
 import Footer from './components/Footer.astro'
@@ -21,7 +21,7 @@ const {
 <html lang="en" data-theme="dim">
   <head>
     <Head title={title} description={description} image={image} ogType={ogType} />
-    {TRANSITION_API && <ViewTransitions />}
+    {TRANSITION_API && <ClientRouter />}
   </head>
   <body>
     <div class="drawer bg-base-100 lg:drawer-open">

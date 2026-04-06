@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 
 import Layout from '@/components/Layout/Layout.astro'
 import * as fmt from '@/lib/format'
@@ -7,13 +7,13 @@ import * as fmt from '@/lib/format'
 export async function getStaticPaths() {
   const employments = await getCollection('employment')
   return employments.map((e) => ({
-    params: { slug: e.slug },
+    params: { slug: e.id },
     props: { e },
   }))
 }
 
 const { e } = Astro.props
-const { Content } = await e.render()
+const { Content } = await render(e)
 ---
 
 <Layout title={e.data.employer}>

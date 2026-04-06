@@ -8,7 +8,7 @@ const { theme, outline } = Astro.props
 ---
 
 <div
-  class={`outline-base-content overflow-hidden rounded-lg outline-2 outline-offset-2 ${outline ? 'outline' : ''}`}
+  class={`overflow-hidden rounded-lg ${outline ? 'outline outline-2 outline-offset-2 outline-base-content' : ''}`}
   data-set-theme={theme}
   data-act-class="outline"
 >

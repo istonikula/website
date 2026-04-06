@@ -11,7 +11,7 @@ export type Employment = {
   tags?: Tag[]
   paragraphs?: string[]
   projectSlugs?: string[]
-  contentSlug?: CollectionEntry<'employment'>['slug']
+  contentSlug?: CollectionEntry<'employment'>['id']
 }
 
 export const employments: Employment[] = [
