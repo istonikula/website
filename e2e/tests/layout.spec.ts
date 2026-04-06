@@ -54,6 +54,32 @@ test.describe('Layout - Navigation', () => {
     await expect(page).toHaveURL('/')
   })
 
+  test('active menu item deselects visually when hovering another item', async ({ page }) => {
+    test.skip(page.viewportSize()!.width < 1024, 'desktop only')
+    const layout = new LayoutPage(page)
+    const items = [['Home', '/'], ['Projects', '/projects'], ['CV', '/cv']] as const
+
+    for (const [activeName, url] of items) {
+      await layout.resetHover()
+      await page.goto(url)
+      const others = items.filter(([name]) => name !== activeName).map(([name]) => name)
+
+      await layout.assertMenuItemSelected(activeName, true)
+      for (const other of others) {
+        await layout.assertMenuItemSelected(other, false)
+      }
+
+      for (const hoverName of others) {
+        await layout.menuLink(hoverName).hover()
+        await layout.assertMenuItemSelected(hoverName, true)
+        await layout.assertMenuItemSelected(activeName, false)
+        for (const remaining of others.filter((n) => n !== hoverName)) {
+          await layout.assertMenuItemSelected(remaining, false)
+        }
+      }
+    }
+  })
+
   test('theme selector changes data-theme attribute', async ({ page }) => {
     const layout = new LayoutPage(page)
     await page.goto('/')
