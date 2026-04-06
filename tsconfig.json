@@ -8,5 +8,5 @@
       ]
     }
   },
-  "exclude": ["dist"]
+  "exclude": ["dist", "e2e"]
 }
