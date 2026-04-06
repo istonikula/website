@@ -54,14 +54,11 @@ const themes = [
   </div>
 </div>
 <script>
-  import { isTransitionBeforeSwapEvent } from 'astro:transitions/client'
-
   setTheme(document)
   changeThemeBehavior(document)
   document.addEventListener('astro:before-swap', (e: Event) => {
-    if (isTransitionBeforeSwapEvent(e)) {
-      setTheme(e.newDocument)
-    }
+    const event = e as import('astro:transitions/client').TransitionBeforeSwapEvent
+    setTheme(event.newDocument)
   })
   document.addEventListener('astro:after-swap', () => changeThemeBehavior(document))
 
