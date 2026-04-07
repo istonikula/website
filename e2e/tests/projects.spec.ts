@@ -18,9 +18,9 @@ test.describe('Projects index page', () => {
     await expect(projects.personalProjectsHeading).toBeVisible()
   })
 
-  test('lists 5 work project cards', async ({ page }) => {
+  test('lists 6 work project cards', async ({ page }) => {
     const projects = new ProjectsPage(page)
-    await expect(projects.workProjectCards).toHaveCount(5)
+    await expect(projects.workProjectCards).toHaveCount(6)
   })
 
   test('lists 5 FOSS project cards', async ({ page }) => {

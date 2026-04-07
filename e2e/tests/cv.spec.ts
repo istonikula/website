@@ -17,9 +17,9 @@ test.describe('CV page', () => {
     await expect(cv.skillsHeading).toBeVisible()
   })
 
-  test('project experience lists 5 entries', async ({ page }) => {
+  test('project experience lists 6 entries', async ({ page }) => {
     const cv = new CvPage(page)
-    expect(await cv.getProjectExperienceCount()).toBe(5)
+    expect(await cv.getProjectExperienceCount()).toBe(6)
   })
 
   test('employment lists 11 entries', async ({ page }) => {
